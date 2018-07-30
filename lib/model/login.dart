@@ -43,10 +43,11 @@ factory Result.fromJson(List<dynamic> json){
 }
 
 class Content{
-  String id,nama,saldo,status;
+  String id,nama,nomor_telepon,saldo,status;
   Content({
     this.id,
     this.nama,
+    this.nomor_telepon,
     this.saldo,
     this.status,
 });
@@ -55,6 +56,7 @@ class Content{
     return Content(
       id: json['id'],
       nama: json['nama'],
+      nomor_telepon: json['nomor_telepon'],
       saldo: json['saldo'],
       status: json['status']
     );
