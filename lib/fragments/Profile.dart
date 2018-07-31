@@ -52,8 +52,8 @@ class ProfileState extends State<Profile> {
               enabled: false,
               keyboardType: TextInputType.emailAddress,
               autofocus: false,
-              decoration: InputDecoration(
-                hintText: email,
+              controller: TextEditingController(
+                text: email
               ),
             ),
           ),
@@ -62,8 +62,8 @@ class ProfileState extends State<Profile> {
             leading: const Icon(Icons.person),
             title: new TextField(
               enabled: false,
-              decoration: InputDecoration(
-                hintText: nama,
+              controller: TextEditingController(
+                text: nama
               ),
               keyboardType: TextInputType.text,
               autofocus: false,
@@ -73,14 +73,12 @@ class ProfileState extends State<Profile> {
           new ListTile(
             leading: const Icon(Icons.phone),
             title: new TextField(
-              onChanged: (String text) {
-                nomorTelepon = text;
-              },
+
               keyboardType: TextInputType.phone,
               autofocus: false,
               enabled: false,
-              decoration: InputDecoration(
-                hintText: nomorTelepon,
+              controller: TextEditingController(
+                text: nomorTelepon
               ),
             ),
           ),

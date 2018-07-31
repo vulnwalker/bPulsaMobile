@@ -71,8 +71,8 @@ class _LoginPageState extends State<LoginPage> {
                 final jsonResponse = json.decode(response.body.toString());
                 String loginResponse ;
                 Resp resp = new Resp.fromJson(jsonResponse);
-                print("Welcome "+ resp.result.content.nama.toString());
                 if(resp.result.err == ''){
+                  print("Welcome "+ resp.result.content.nama.toString());
                   var db = new DatabaseHelper();
                   var dataAccount = new Account(
                     _emailController.text,

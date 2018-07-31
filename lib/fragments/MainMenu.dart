@@ -66,6 +66,7 @@ class MainMenuState extends State<MainMenu> {
         print("Iklan terload");
       }
     };
+   
 
   }
 @override
@@ -79,6 +80,9 @@ class MainMenuState extends State<MainMenu> {
 
   @override
   Widget build(BuildContext context) {
+     interstitialAd
+                ..load()
+                ..show();
     final videoButton1 = Padding(
       padding: EdgeInsets.symmetric(vertical: 8.0),
       child: Material(
@@ -179,26 +183,26 @@ class MainMenuState extends State<MainMenu> {
             videoButton2,
             videoButton3,
             absenButton,
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-              child: Material(
-                borderRadius: BorderRadius.circular(30.0),
-                shadowColor: Colors.lightBlueAccent.shade100,
-                elevation: 5.0,
-                child: MaterialButton(
-                  minWidth: 200.0,
-                  height: 42.0,
-                  onPressed: () {
-                    interstitialAd
-                      ..load()
-                      ..show();
-                  },
-                  color: Colors.lightBlueAccent,
-                  child: Text('VIEW 1', style: TextStyle(color: Colors.white)),
-                ),
-              ),
-            ),
-            viewButton2,
+            // Padding(
+            //   padding: EdgeInsets.symmetric(vertical: 8.0),
+            //   child: Material(
+            //     borderRadius: BorderRadius.circular(30.0),
+            //     shadowColor: Colors.lightBlueAccent.shade100,
+            //     elevation: 5.0,
+            //     child: MaterialButton(
+            //       minWidth: 200.0,
+            //       height: 42.0,
+            //       onPressed: () {
+            //         interstitialAd
+            //           ..load()
+            //           ..show();
+            //       },
+            //       color: Colors.lightBlueAccent,
+            //       child: Text('VIEW 1', style: TextStyle(color: Colors.white)),
+            //     ),
+            //   ),
+            // ),
+            // viewButton2,
             // SizedBox(height: 24.0),
            
             
