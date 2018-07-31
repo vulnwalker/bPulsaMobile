@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       SettingsScreen.routeName:  (context) => new SettingsScreen(),
       SplashScreen.routeName:  (context) => new SplashScreen(),
       Register.routeName:  (context) => new Register(),
-      MainActivity.routeName:  (context) => new MainActivity(), 
+      MainActivity.routeName:  (context) => new MainActivity(),
   };
 
   @override
@@ -33,5 +33,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

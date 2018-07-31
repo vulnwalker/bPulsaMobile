@@ -22,7 +22,7 @@ class DrawerItem {
 class MainActivity extends StatefulWidget {
   static const String routeName = '/MainActivity';
   // MainActivity(this.namaMember);
-  
+
   @override
   MainActivityState createState() => new MainActivityState();
 }
@@ -34,13 +34,13 @@ class MainActivityState extends State<MainActivity> {
     var dbClient = await databaseHelper.db;
     List<Map> list = await dbClient.rawQuery('SELECT * FROM tabel_account');
       namaMember = list[0]["nama"];
-    print("nama sia saha"+ list[0]["nama"]); 
+    print("nama sia saha"+ list[0]["nama"]);
   }
   @override
   void initState(){
     super.initState();
     (() async {
-      var asu = await getDataAccount(); 
+      var asu = await getDataAccount();
       setState(() {
       });
     })();
@@ -65,7 +65,7 @@ class MainActivityState extends State<MainActivity> {
       ),
     );
 
-    
+
     var headerChild = new DrawerHeader(child: childrenHeader);
     var fragmentMainMenu = new ListTile(
           leading: new Icon(Icons.home),
@@ -74,7 +74,7 @@ class MainActivityState extends State<MainActivity> {
           onTap: (){
             this.barTitle = configClass.APP_NAME;
             setState(() => this.fragmentTag = configClass.APP_NAME);
-            Navigator.of(context).pop(); 
+            Navigator.of(context).pop();
           }
         );
     var fragmentTukarPoint = new ListTile(
@@ -83,7 +83,7 @@ class MainActivityState extends State<MainActivity> {
           selected: this.fragmentTag == "Tukar Point",
           onTap: (){
             setState(() => this.fragmentTag = "Tukar Point");
-            Navigator.of(context).pop(); 
+            Navigator.of(context).pop();
           }
         );
     var fragmentHistoriTukarPoint = new ListTile(
@@ -92,7 +92,7 @@ class MainActivityState extends State<MainActivity> {
           selected: this.fragmentTag == "Histori Tukar Point",
           onTap: (){
             setState(() => this.fragmentTag = "Histori Tukar Point");
-            Navigator.of(context).pop(); 
+            Navigator.of(context).pop();
           }
         );
     var fragmentProfile = new ListTile(
@@ -101,7 +101,7 @@ class MainActivityState extends State<MainActivity> {
           selected: this.fragmentTag == "Profile",
           onTap: (){
             setState(() => this.fragmentTag = "Profile");
-            Navigator.of(context).pop(); 
+            Navigator.of(context).pop();
           }
         );
     var aboutChild = new AboutListTile(
@@ -125,7 +125,7 @@ class MainActivityState extends State<MainActivity> {
             Navigator.of(context).pop();
             Navigator.of(context).pushNamed(routeName);
           });
-          
+
         },
       );
     }
@@ -150,7 +150,7 @@ class MainActivityState extends State<MainActivity> {
       child: listView,
     );
   }
-  
+
   _getDrawerItemWidget(String pos) {
       this.barTitle = pos;
       switch (pos) {
@@ -165,10 +165,10 @@ class MainActivityState extends State<MainActivity> {
           return new MainMenu(namaMember);
       }
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    getDataAccount(); 
+    getDataAccount();
     return new Scaffold(
       appBar: new AppBar(
         title:  Text(
@@ -178,7 +178,7 @@ class MainActivityState extends State<MainActivity> {
       ),
       body:_getDrawerItemWidget(this.fragmentTag),
       drawer: getNavDrawer(context),
-      
+
     );
   }
 

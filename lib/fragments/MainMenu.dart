@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:bpulsa/config.dart';
 import 'dart:async';
 import 'package:firebase_admob/firebase_admob.dart';
 const APP_ID = "<Put in your Device ID>";
 class MainMenu extends StatefulWidget {
   MainMenu(this.namaMember);
   final String namaMember;
+  ConfigClass configClass = new ConfigClass();
   @override
   MainMenuState createState() {
     return new MainMenuState();
@@ -62,6 +64,7 @@ class MainMenuState extends State<MainMenu> {
       if (event == RewardedVideoAdEvent.failedToLoad) {
         loadVideoAds();
       }else if(event == RewardedVideoAdEvent.loaded){
+        widget.configClass.closeLoading(context);
         RewardedVideoAd.instance.show();
         print("Iklan terload");
       }
@@ -93,6 +96,7 @@ class MainMenuState extends State<MainMenu> {
           minWidth: 200.0,
           height: 42.0,
            onPressed: () {
+             widget.configClass.showLoading(context);
              loadVideoAds();
              
            },

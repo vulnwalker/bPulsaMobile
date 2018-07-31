@@ -1,4 +1,4 @@
-#Mon Jul 30 20:41:42 WIB 2018
-base.0=/home/kszxpo/AndroidStudioProjects/bpulsa/build/app/intermediates/transforms/dexMerger/debug/0
+#Tue Jul 31 17:57:05 WIB 2018
+base.0=/home/kszxpo/AndroidStudioProject/bPulsaMobile/build/app/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex
