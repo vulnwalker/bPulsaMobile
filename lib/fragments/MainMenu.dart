@@ -55,14 +55,24 @@ class MainMenuState extends State<MainMenu> {
   @override
   void initState() {
     super.initState();
+
     FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
     bannerAd = buildBanner()..load();
     interstitialAd = buildInterstitial()..load();
+    // loadVideoAds();
+    
     RewardedVideoAd.instance.listener =
         (RewardedVideoAdEvent event, {String rewardType, int rewardAmount}) {
       print("RewardedVideoAd event $event");
       if (event == RewardedVideoAdEvent.failedToLoad) {
-        loadVideoAds();
+        widget.configClass.closeLoading(context);
+        AlertDialog dialog = new AlertDialog(
+            content: new Text("Gagal Load Video")
+        );
+        showDialog(context: context,child: dialog);
+        print("Gagal Load Video");
+
+        // loadVideoAds();
       }else if(event == RewardedVideoAdEvent.loaded){
         widget.configClass.closeLoading(context);
         RewardedVideoAd.instance.show();

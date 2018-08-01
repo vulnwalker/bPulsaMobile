@@ -28,12 +28,12 @@ class ProfileState extends State<Profile> {
   void initState(){
     super.initState();
 
-    (() async {
-      var asu = await getDataAccount(); 
-      setState(() {
+    // (() async {
+    //   var asu = await getDataAccount(); 
+    //   setState(() {
 
-      });
-    })();
+    //   });
+    // })();
     // new Future<String>.delayed(new Duration(seconds: 1), () => '["123", "456", "789"]').then((String value) {
     //   setState(() {
     //       getDataAccount(); 
@@ -45,10 +45,10 @@ class ProfileState extends State<Profile> {
   Widget build(BuildContext context) { 
     // getDataAccount(); 
      Future buildText() async{
-      //  var asu = await getDataAccount(); 
-       var postData = await http.post(widget.configClass.auth(), body: {"email":"", "password": ""}).then((response) {
+       var asu = await getDataAccount(); 
+      //  var postData = await http.post(widget.configClass.auth(), body: {"email":"", "password": ""}).then((response) {
         
-       });
+      //  });
         
       return 1;
     }

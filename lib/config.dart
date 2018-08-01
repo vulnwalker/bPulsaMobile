@@ -19,6 +19,12 @@ class ConfigClass {
   String register(){
     return getHostName()+"register";
   }
+  String editProfile(){
+    return getHostName()+"member/update";
+  }
+  String gainedPoint(){
+    return getHostName()+"member/gained_point";
+  }
   var loadingScreen = new ProgressHUD(
       backgroundColor: Colors.black12,
       color: Colors.white,
