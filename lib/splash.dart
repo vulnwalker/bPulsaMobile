@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:bpulsa/MainActivity.dart';
 import 'package:bpulsa/login/login.dart';
@@ -59,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         padding: EdgeInsets.only(top: 10.0),
                       ),
                       Text(
-                        configClass.APP_NAME,
+                        configClass.app_name,
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

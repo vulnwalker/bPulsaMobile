@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/kszxpo/AndroidStudioProjects/bpulsa/build/firebase_admob/intermediates/res/merged/release/values-en-rAU/values-en-rAU.xml",
+            "map": [
+                {
+                    "source": "/root/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/6d032d94efe1deab9d74ec3d692c381b/res/values-en-rAU/values-en-rAU.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/kszxpo/AndroidStudioProjects/bpulsa/build/firebase_admob/intermediates/incremental/mergeReleaseResources/merged.dir/values-en-rAU/values-en-rAU.xml",
+            "map": [
+                {
+                    "source": "/root/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/6d032d94efe1deab9d74ec3d692c381b/res/values-en-rAU/values-en-rAU.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}

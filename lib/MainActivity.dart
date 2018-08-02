@@ -28,7 +28,7 @@ class MainActivity extends StatefulWidget {
 }
 
 class MainActivityState extends State<MainActivity> {
-  String namaMember = configClass.APP_NAME;
+  String namaMember = configClass.app_name;
   var databaseHelper = new  DatabaseHelper() ;
   void getDataAccount() async{
     var dbClient = await databaseHelper.db;
@@ -46,8 +46,8 @@ class MainActivityState extends State<MainActivity> {
     })();
 
   }
-  String fragmentTag = configClass.APP_NAME;
-  String barTitle = configClass.APP_NAME;
+  String fragmentTag = configClass.app_name;
+  String barTitle = configClass.app_name;
   Drawer getNavDrawer(BuildContext context) {
     final  childrenHeader = Container(
       child: new Row(
@@ -70,10 +70,10 @@ class MainActivityState extends State<MainActivity> {
     var fragmentMainMenu = new ListTile(
           leading: new Icon(Icons.home),
           title: new Text("Main Menu"),
-          selected: this.fragmentTag == configClass.APP_NAME,
+          selected: this.fragmentTag == configClass.app_name,
           onTap: (){
-            this.barTitle = configClass.APP_NAME;
-            setState(() => this.fragmentTag = configClass.APP_NAME);
+            this.barTitle = configClass.app_name;
+            setState(() => this.fragmentTag = configClass.app_name);
             Navigator.of(context).pop();
           }
         );
@@ -106,7 +106,7 @@ class MainActivityState extends State<MainActivity> {
         );
     var aboutChild = new AboutListTile(
         child: new Text("About"),
-        applicationName: configClass.APP_NAME,
+        applicationName: configClass.app_name,
         applicationVersion: "v1.0.0",
         applicationIcon: new Icon(Icons.adb),
         icon: new Icon(Icons.info)
@@ -161,7 +161,7 @@ class MainActivityState extends State<MainActivity> {
         case "Profile":
           return new Profile();
         default:
-          this.barTitle = configClass.APP_NAME;
+          this.barTitle = configClass.app_name;
           return new MainMenu(namaMember);
       }
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:bpulsa/config.dart';
-import 'dart:async';
 import 'package:firebase_admob/firebase_admob.dart';
 const APP_ID = "<Put in your Device ID>";
 class MainMenu extends StatefulWidget {
@@ -184,7 +183,7 @@ class MainMenuState extends State<MainMenu> {
         ),
       ),
     );
-    //  bannerAd.show();
+     bannerAd.show();
     
      return Scaffold(
       backgroundColor: Colors.white,

@@ -2,11 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:bpulsa/config.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:bpulsa/database/DatabaseHelper.dart';
-import 'package:bpulsa/database/model/account.dart';
-import 'package:bpulsa/MainActivity.dart';
 class Profile extends StatefulWidget {
   ConfigClass configClass = new ConfigClass();
   @override

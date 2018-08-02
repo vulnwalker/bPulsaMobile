@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/kszxpo/AndroidStudioProjects/bpulsa/build/path_provider/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c61001b313e136f96cadd8fb4fcd6c2ec8616461">
+        <dex dex="/home/kszxpo/AndroidStudioProjects/bpulsa/build/app/intermediates/transforms/preDex/release/31.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/kszxpo/AndroidStudioProjects/bpulsa/build/firebase_admob/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7f08d0e8e124f01883f50d5487c5da4db3510e23">
+        <dex dex="/home/kszxpo/AndroidStudioProjects/bpulsa/build/app/intermediates/transforms/preDex/release/29.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/kszxpo/AndroidStudioProjects/bpulsa/build/sqflite/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b522bdb0ac6a7f2a18bf2986cb46c5abb2530a7c">
+        <dex dex="/home/kszxpo/AndroidStudioProjects/bpulsa/build/app/intermediates/transforms/preDex/release/30.jar" />
+    </item>
+
+</items>
