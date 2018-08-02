@@ -55,29 +55,29 @@ class MainMenuState extends State<MainMenu> {
   void initState() {
     super.initState();
 
-    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
-    bannerAd = buildBanner()..load();
-    interstitialAd = buildInterstitial()..load();
-    // loadVideoAds();
+    // FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    // bannerAd = buildBanner()..load();
+    // interstitialAd = buildInterstitial()..load();
+    // // loadVideoAds();
     
-    RewardedVideoAd.instance.listener =
-        (RewardedVideoAdEvent event, {String rewardType, int rewardAmount}) {
-      print("RewardedVideoAd event $event");
-      if (event == RewardedVideoAdEvent.failedToLoad) {
-        widget.configClass.closeLoading(context);
-        AlertDialog dialog = new AlertDialog(
-            content: new Text("Gagal Load Video")
-        );
-        showDialog(context: context,child: dialog);
-        print("Gagal Load Video");
+    // RewardedVideoAd.instance.listener =
+    //     (RewardedVideoAdEvent event, {String rewardType, int rewardAmount}) {
+    //   print("RewardedVideoAd event $event");
+    //   if (event == RewardedVideoAdEvent.failedToLoad) {
+    //     widget.configClass.closeLoading(context);
+    //     AlertDialog dialog = new AlertDialog(
+    //         content: new Text("Gagal Load Video")
+    //     );
+    //     showDialog(context: context,child: dialog);
+    //     print("Gagal Load Video");
 
-        // loadVideoAds();
-      }else if(event == RewardedVideoAdEvent.loaded){
-        widget.configClass.closeLoading(context);
-        RewardedVideoAd.instance.show();
-        print("Iklan terload");
-      }
-    };
+    //     // loadVideoAds();
+    //   }else if(event == RewardedVideoAdEvent.loaded){
+    //     widget.configClass.closeLoading(context);
+    //     RewardedVideoAd.instance.show();
+    //     print("Iklan terload");
+    //   }
+    // };
    
 
   }
@@ -92,9 +92,9 @@ class MainMenuState extends State<MainMenu> {
 
   @override
   Widget build(BuildContext context) {
-     interstitialAd
-                ..load()
-                ..show();
+    //  interstitialAd
+    //             ..load()
+    //             ..show();
     final videoButton1 = Padding(
       padding: EdgeInsets.symmetric(vertical: 8.0),
       child: Material(
@@ -183,7 +183,7 @@ class MainMenuState extends State<MainMenu> {
         ),
       ),
     );
-     bannerAd.show();
+    //  bannerAd.show();
     
      return Scaffold(
       backgroundColor: Colors.white,
