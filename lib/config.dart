@@ -20,6 +20,9 @@ class ConfigClass {
   String gainedPoint(){
     return getHostName()+"member/gained_point";
   }
+  String daftarTukarPoint(){
+    return getHostName()+"daftar/point";
+  }
   var loadingScreen = new ProgressHUD(
       backgroundColor: Colors.black12,
       color: Colors.white,

@@ -2,9 +2,12 @@ import 'dart:async';
 import 'package:bpulsa/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-
+import 'package:bpulsa/model/DaftarPoint.dart';
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 class TukarPoint extends StatefulWidget {
   ConfigClass configClass = new ConfigClass();
+
   Card getStructuredGridCell(name) {
     return new Card(
         elevation: 1.5,
@@ -44,27 +47,41 @@ class TukarPoint extends StatefulWidget {
 
 class TukarPointState extends State<TukarPoint> {
   List<Widget> kolom = [];
+  List dataResult;
+  List dataContent;
+  // final List<DaftarPoint> listDaftarPoint;
 
+  // List<DaftarPoint> parseDaftarPoints(String responseBody) {
+  //   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+
+  //   return parsed.map<DaftarPoint>((json) => DaftarPoint.fromJson(json)).toList();
+  // }
+  @override
+  void initState() {
+    super.initState();
+    this.kolom = [];
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
       Future getDataTukarPoint() async{
-       await http.post(widget.configClass.auth(), body: {"email":"", "password": ""}).then((response) {
+       await http.post("http://bpulsa.rm-rf.studio/daftar/point", body: {"email":"vulnwalker@tuyul.online", "password": "rf09thebye"}).then((response) {
+        this.kolom = [];
+        var extractdata = JSON.decode(response.body);
+        dataResult = extractdata["result"];
+        dataContent = dataResult[0]["content"];
+        for (var i = 0; i < dataContent.length; i++) {
+          kolom.add(widget.getStructuredGridCell(dataContent[i]['title']));        
+          
+        }
 
-        // kolom[0] =  widget.getStructuredGridCell("");
-        // kolom[1] =  widget.getStructuredGridCell("Twitter");
-        // kolom[2] =  widget.getStructuredGridCell("Instagram");
-        // kolom[3] =  widget.getStructuredGridCell("Linkedin");
-        // kolom[4] =  widget.getStructuredGridCell("Gooogle Plus");
-        // kolom[5] =  widget.getStructuredGridCell("Launcher Icon");
-        kolom.add(widget.getStructuredGridCell("Facebook"));        
-        kolom.add(widget.getStructuredGridCell("Twitter"));        
-        kolom.add(widget.getStructuredGridCell("Instagram Icon"));        
-        kolom.add(widget.getStructuredGridCell("Linkedin Icon"));        
-        kolom.add(widget.getStructuredGridCell("Gooogle Icon"));        
-        kolom.add(widget.getStructuredGridCell("Launcher Icon"));        
-        kolom.add(widget.getStructuredGridCell("Launcher Icon"));        
+        // kolom.add(widget.getStructuredGridCell("Twitter"));        
+        // kolom.add(widget.getStructuredGridCell("Instagram Icon"));        
+        // kolom.add(widget.getStructuredGridCell("Linkedin Icon"));        
+        // kolom.add(widget.getStructuredGridCell("Gooogle Icon"));        
+        // kolom.add(widget.getStructuredGridCell("Launcher Icon"));        
+        // kolom.add(widget.getStructuredGridCell("Launcher Icon"));        
         print("Load sukses");
        });
        

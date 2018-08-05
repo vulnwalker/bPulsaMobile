@@ -33,8 +33,7 @@ class MainActivityState extends State<MainActivity> {
   void getDataAccount() async{
     var dbClient = await databaseHelper.db;
     List<Map> list = await dbClient.rawQuery('SELECT * FROM tabel_account');
-      namaMember = list[0]["nama"];
-    print("nama sia saha"+ list[0]["nama"]);
+    namaMember = list[0]["nama"];
   }
   @override
   void initState(){
