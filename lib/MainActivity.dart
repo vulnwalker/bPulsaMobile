@@ -10,6 +10,7 @@ import 'package:bpulsa/fragments/TukarPoint.dart';
 import 'package:bpulsa/fragments/HistorTukarPoint.dart';
 import 'package:bpulsa/fragments/MainMenu.dart';
 import 'package:bpulsa/fragments/Profile.dart';
+import 'package:bpulsa/fragments/Task.dart';
 
 //Database
 import 'package:bpulsa/database/DatabaseHelper.dart';
@@ -29,11 +30,13 @@ class MainActivity extends StatefulWidget {
 
 class MainActivityState extends State<MainActivity> {
   String namaMember = configClass.app_name;
+  int saldoMember = 0;
   var databaseHelper = new  DatabaseHelper() ;
   void getDataAccount() async{
     var dbClient = await databaseHelper.db;
     List<Map> list = await dbClient.rawQuery('SELECT * FROM tabel_account');
     namaMember = list[0]["nama"];
+    saldoMember = list[0]["saldo"];
   }
   @override
   void initState(){
@@ -52,14 +55,22 @@ class MainActivityState extends State<MainActivity> {
       child: new Row(
         children: [
           CircleAvatar(
-            radius: 50.0,
+            radius: 40.0,
             backgroundColor: Colors.transparent,
             backgroundImage: AssetImage('assets/logo.png'),
           ),
-         Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(namaMember)
+          Padding(
+            padding: EdgeInsets.all(40.0),
+            child: Column(
+              children: <Widget>[
+                Text(namaMember),
+                Text("Point : "+ saldoMember.toString()),
+              ],
           ),
+          )
+          
+          
+            
         ],
       ),
     );
@@ -73,6 +84,16 @@ class MainActivityState extends State<MainActivity> {
           onTap: (){
             this.barTitle = configClass.app_name;
             setState(() => this.fragmentTag = configClass.app_name);
+            Navigator.of(context).pop();
+          }
+        );
+    var fragmentTask = new ListTile(
+          leading: new Icon(Icons.work),
+          title: new Text("Task"),
+          selected: this.fragmentTag == "Task",
+          onTap: (){
+            this.barTitle = "Task";
+            setState(() => this.fragmentTag = "Task");
             Navigator.of(context).pop();
           }
         );
@@ -133,6 +154,7 @@ class MainActivityState extends State<MainActivity> {
     var myNavChildren = [
       headerChild,
       fragmentMainMenu,
+      fragmentTask,
       fragmentTukarPoint,
       fragmentHistoriTukarPoint,
       fragmentProfile,
@@ -159,6 +181,9 @@ class MainActivityState extends State<MainActivity> {
           return new HistoriTukarPoint();
         case "Profile":
           return new Profile();
+        case "Task":
+          this.barTitle = "Task";
+          return new Task(namaMember);
         default:
           this.barTitle = configClass.app_name;
           return new MainMenu(namaMember);

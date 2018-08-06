@@ -23,6 +23,9 @@ class ConfigClass {
   String daftarTukarPoint(){
     return getHostName()+"daftar/point";
   }
+  String absesnHarian(){
+    return getHostName()+"task/absen";
+  }
   var loadingScreen = new ProgressHUD(
       backgroundColor: Colors.black12,
       color: Colors.white,

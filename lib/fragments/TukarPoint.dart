@@ -2,40 +2,12 @@ import 'dart:async';
 import 'package:bpulsa/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:bpulsa/model/DaftarPoint.dart';
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
+import 'package:flushbar/flushbar.dart';
 class TukarPoint extends StatefulWidget {
   ConfigClass configClass = new ConfigClass();
+  
 
-  Card getStructuredGridCell(name) {
-    return new Card(
-        elevation: 1.5,
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          verticalDirection: VerticalDirection.down,
-          children: <Widget>[
-            new Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-             
-                ),
-                CircleAvatar(
-                  radius: 50.0,
-                  backgroundColor: Colors.transparent,
-                  backgroundImage: AssetImage('assets/logo.png'),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: Text(name)
-                ),
-              ],
-            ),
-          ],
-        ));
-    }
 
 
   @override
@@ -61,9 +33,109 @@ class TukarPointState extends State<TukarPoint> {
     super.initState();
     this.kolom = [];
   }
+  
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    
+      GestureDetector getStructuredGridCell(name,deskripsi) {
+        return new GestureDetector(
+        onTap: (){
+          Flushbar(
+            flushbarPosition: FlushbarPosition.BOTTOM, //Immutable
+            reverseAnimationCurve: Curves.decelerate, //Immutable
+            forwardAnimationCurve: Curves.elasticOut, //Immutable
+            
+          )
+            ..title = name
+            ..message = deskripsi
+            ..duration = Duration(seconds: 3)
+            ..backgroundColor = Colors.red
+            ..backgroundColor = Colors.red
+            ..shadowColor = Colors.blue[800]
+            ..isDismissible = true
+            ..mainButton = FlatButton(
+              onPressed: () {},
+              child: Text(
+                "TUKAR",
+                style: TextStyle(color: Colors.amber),
+              ),
+            )
+            ..backgroundGradient = new LinearGradient(colors: [Colors.blue,Colors.black])
+            ..icon = Icon(
+              Icons.shopping_cart,
+              color: Colors.greenAccent,
+            )
+            ..linearProgressIndicator = LinearProgressIndicator(
+              backgroundColor: Colors.blueGrey,
+            )
+            ..show(context);
+          // Flushbar(
+          //   title: name,
+          //   message: deskripsi,
+          //   flushbarPosition: FlushbarPosition.TOP, //Immutable
+          //   reverseAnimationCurve: Curves.decelerate, //Immutable
+          //   forwardAnimationCurve: Curves.elasticOut, //Immutable
+          //   backgroundColor: Colors.red,
+          //   shadowColor: Colors.blue[800],
+          //   backgroundGradient: new LinearGradient(colors: [Colors.blue,Colors.black]),
+          //   isDismissible: false,
+          //   duration: Duration(seconds: 4),
+          //   icon: Icon(
+          //     Icons.check,
+          //     color: Colors.greenAccent,
+          //   ),
+          //   mainButton: FlatButton(
+          //     onPressed: () {},
+          //     child: Text(
+          //       "CLAP",
+          //       style: TextStyle(color: Colors.amber),
+          //     ),
+          //   ),
+          //   linearProgressIndicator: LinearProgressIndicator(
+          //     backgroundColor: Colors.blueGrey,
+          //   ),
+          //   titleText: new Text(
+          //     "Hello Hero",
+          //     style: TextStyle(fontWeight: FontWeight.bold,  color: Colors.yellow[600], fontFamily: "ShadowsIntoLightTwo"),
+          //   ),
+          //   messageText: new Text(
+          //     "You killed that giant monster in the city. Congratulations!",
+          //     style: TextStyle(fontSize: 18.0, color: Colors.green ,fontFamily: "ShadowsIntoLightTwo"),
+          //   ),
+          // )..show(context);
+        }, 
+        
+        child: new Card(
+              elevation: 1.5,
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                verticalDirection: VerticalDirection.down,
+                children: <Widget>[
+                  new Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(16.0),
+                  
+                      ),
+                      CircleAvatar(
+                        radius: 50.0,
+                        backgroundColor: Colors.transparent,
+                        backgroundImage: AssetImage('assets/logo.png'),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(4.0),
+                        child: Text(name)
+                      ),
+                    ],
+                  ),
+                ],
+              )
+          )
+      );
+     
+    }
 
       Future getDataTukarPoint() async{
        await http.post("http://bpulsa.rm-rf.studio/daftar/point", body: {"email":"vulnwalker@tuyul.online", "password": "rf09thebye"}).then((response) {
@@ -72,7 +144,7 @@ class TukarPointState extends State<TukarPoint> {
         dataResult = extractdata["result"];
         dataContent = dataResult[0]["content"];
         for (var i = 0; i < dataContent.length; i++) {
-          kolom.add(widget.getStructuredGridCell(dataContent[i]['title']));        
+          kolom.add(getStructuredGridCell(dataContent[i]['title'],dataContent[i]['description']));        
           
         }
 
@@ -91,6 +163,7 @@ class TukarPointState extends State<TukarPoint> {
 
 
      return new Scaffold(
+       
       body: FutureBuilder(
             future: getDataTukarPoint(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
